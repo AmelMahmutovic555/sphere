@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Sphere</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        /* Card Container */
+        .register-card {
+            width: 100%;
+            max-width: 500px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Card Header */
+        .register-card h1 {
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Form Group */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 4px rgba(76, 175, 80, 0.2);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer Link */
+        .register-footer {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .register-footer a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+<div class="register-card">
+    <h1>Create Account</h1>
+    <form action="/register" method="POST">
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+<!--        <div class="form-group">-->
+<!--            <label for="confirmPassword">Confirm Password:</label>-->
+<!--            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>-->
+<!--        </div>-->
+        <button type="submit" class="submit-btn">Register</button>
+    </form>
+    <div class="register-footer">
+        <p>Already have an account? <a href="/login">Login here</a>.</p>
+    </div>
+</div>
+</body>
+
+</html>

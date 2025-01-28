@@ -1,0 +1,236 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Edit Page</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            background-color: #f0f0f0;-->
+<!--        }-->
+
+<!--        header {-->
+<!--            background-color: #4CAF50;-->
+<!--            color: white;-->
+<!--            padding: 15px 0;-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        header h1 {-->
+<!--            margin: 0;-->
+<!--            font-size: 2.5em;-->
+<!--        }-->
+
+<!--        nav {-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            background-color: #333;-->
+<!--        }-->
+
+<!--        nav a {-->
+<!--            color: white;-->
+<!--            padding: 14px 20px;-->
+<!--            text-decoration: none;-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        nav a:hover {-->
+<!--            background-color: #ddd;-->
+<!--            color: black;-->
+<!--        }-->
+
+<!--        .main-content {-->
+<!--            padding: 20px;-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<header>-->
+<!--    <div>-->
+<!--        <h1>SPHERE</h1>-->
+<!--    </div>-->
+<!--</header>-->
+
+<!--<nav>-->
+<!--    <a href="#">Home</a>-->
+<!--    <a href="#">Login</a>-->
+<!--    <a href="#">Register</a>-->
+<!--</nav>-->
+<!--<div class="main-content">-->
+<!--    <form th:action="@{'/edit/' + ${client.id}}" th:method="POST">-->
+<!--        <label>Name: </label><input type="text" name="name" th:value="${client.name}">-->
+<!--        <label>Surname: </label><input type="text" name="surname" th:value="${client.surname}">-->
+<!--        <label>Product Name: </label><input type="text" name="productName" th:value="${client.product.name}">-->
+<!--        <label>Price: </label><input type="text" name="price" th:value="${client.product.price}">-->
+<!--        <input type="submit" value="Add">-->
+<!--    </form>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Page</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .main-content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #4CAF50;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 4px rgba(76, 175, 80, 0.2);
+        }
+
+        .form-actions {
+            text-align: center;
+        }
+
+        .form-actions input {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-actions input:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <div>
+        <h1>SPHERE</h1>
+    </div>
+</header>
+
+<nav>
+    <a href="/home">Home</a>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+</nav>
+
+<div class="main-content">
+    <h2>Edit Client Details</h2>
+    <form th:action="@{'/edit/' + ${client.id}}" th:method="POST">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" th:value="${client.name}" placeholder="Enter name" required>
+        </div>
+        <div class="form-group">
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname" name="surname" th:value="${client.surname}" placeholder="Enter surname" required>
+        </div>
+        <div class="form-group">
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="productName" th:value="${client.product.name}" placeholder="Enter product name" required>
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" th:value="${client.product.price}" placeholder="Enter price" required>
+        </div>
+        <div class="form-actions">
+            <input type="submit" value="Update">
+        </div>
+    </form>
+</div>
+</body>
+
+</html>

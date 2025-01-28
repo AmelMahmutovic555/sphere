@@ -1,0 +1,343 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Sphere - Home</title>-->
+<!--    <link rel="stylesheet" href="../static/home.css">-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            background-color: #f0f0f0;-->
+<!--        }-->
+
+<!--        header {-->
+<!--            background-color: #4CAF50;-->
+<!--            color: white;-->
+<!--            padding: 15px 0;-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        header h1 {-->
+<!--            margin: 0;-->
+<!--            font-size: 2.5em;-->
+<!--        }-->
+
+<!--        nav {-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            background-color: #333;-->
+<!--        }-->
+
+<!--        nav a {-->
+<!--            color: white;-->
+<!--            padding: 14px 20px;-->
+<!--            text-decoration: none;-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        nav a:hover {-->
+<!--            background-color: #ddd;-->
+<!--            color: black;-->
+<!--        }-->
+
+<!--        .main-content {-->
+<!--            padding: 20px;-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        .intro {-->
+<!--            font-size: 1.2em;-->
+<!--            color: #333;-->
+<!--            margin-top: 20px;-->
+<!--        }-->
+
+<!--        .cta-button {-->
+<!--            background-color: #4CAF50;-->
+<!--            color: white;-->
+<!--            padding: 10px 20px;-->
+<!--            border: none;-->
+<!--            border-radius: 5px;-->
+<!--            cursor: pointer;-->
+<!--            font-size: 1em;-->
+<!--            text-decoration: none;-->
+<!--        }-->
+
+<!--        .cta-button:hover {-->
+<!--            background-color: #45a049;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<header>-->
+<!--    <div>-->
+<!--        <h1>SPHERE</h1>-->
+<!--    </div>-->
+<!--</header>-->
+
+<!--<nav>-->
+<!--    <a href="#">Home</a>-->
+<!--    <a href="#">Login</a>-->
+<!--    <a href="#">Register</a>-->
+<!--</nav>-->
+
+<!--<div class="main-content">-->
+<!--    <h2>Welcome to Sphere!</h2>-->
+<!--    <p class="intro">Where teamwork meets innovation. A space to organize, collaborate, and succeed.</p>-->
+<!--    <a href="#" class="cta-button">Get Started</a>-->
+<!--    <div>-->
+<!--        <table>-->
+<!--            <tr>-->
+<!--                <td>-->
+<!--                    <a href="/add">Create</a>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <th>First Name</th>-->
+<!--                <th>Last Name</th>-->
+<!--                <th>Product</th>-->
+<!--                <th>Price</th>-->
+<!--            </tr>-->
+<!--            <tr th:each="client : ${clients}">-->
+<!--                <td th:text="${client.name}">-->
+<!--                </td>-->
+<!--                <td th:text="${client.surname}"></td>-->
+<!--                <td th:text="${client.product.name}"></td>-->
+<!--                <td th:text="${client.product.price}"></td>-->
+<!--                <td>-->
+<!--                    <a th:href="'/edit/' + ${client.id}">Edit</a>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <form th:action="@{'/delete/' + ${client.id}}" th:method="POST"><input type="submit" value="Delete"></form>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--</body>-->
+
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sphere - Home</title>
+    <link rel="stylesheet" href="../static/home.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Header */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        nav a, nav > form > input {
+            color: white;
+            padding: 12px 20px;
+            font-size: 1rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover, nav > form > input:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        nav > form > input {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .main-content h2 {
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+
+        .intro {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #45a049;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px auto;
+            max-width: 1000px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        table th, table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Actions */
+        .actions a, .actions form input {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 0.9rem;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .actions a {
+            color: white;
+            background-color: #007BFF;
+        }
+
+        .actions a:hover {
+            background-color: #0056b3;
+        }
+
+        .actions form input[type="submit"] {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .actions form input[type="submit"]:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <div>
+        <h1>SPHERE</h1>
+    </div>
+</header>
+
+<nav>
+    <a href="/home">Home</a>
+    <th:block th:if="${authenticated==false}">
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    </th:block>
+    <th:block th:if="${authenticated==true}">
+        <form action="/logout" method="POST">
+            <input type="submit" value="Logout">
+        </form>
+    </th:block>
+</nav>
+
+<div class="main-content">
+    <h2>Welcome to Sphere!</h2>
+    <p class="intro">Where teamwork meets innovation. A space to organize, collaborate, and succeed.</p>
+    <a th:if="${authenticated==true}" href="/add" class="cta-button">Create Product</a>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th th:if="${authenticated==true}">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="client : ${clients}">
+                <td th:text="${client.name}"></td>
+                <td th:text="${client.surname}"></td>
+                <td th:text="${client.product.name}"></td>
+                <td th:text="${client.product.price}"></td>
+                <td th:if="${authenticated==true}" class="actions">
+                    <a th:href="'/edit/' + ${client.id}">Edit</a>
+                    <form th:action="@{'/delete/' + ${client.id}}" th:method="POST" style="display: inline;">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+
+</html>
+
