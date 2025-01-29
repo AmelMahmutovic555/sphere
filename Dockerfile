@@ -4,7 +4,7 @@ FROM maven:3.8.4-openjdk-11 AS build
 # Set the working directory
 WORKDIR /app
 
-# Copy the pom.xml and the source code
+# Copy the pom.xml and source code
 COPY pom.xml .
 COPY src /app/src
 
