@@ -1,0 +1,16 @@
+com\example\sphere\repository\ProductRepository.class
+com\example\sphere\service\impl\UserInformationServiceImpl.class
+com\example\sphere\SphereApplication.class
+com\example\sphere\service\UserInformationService.class
+com\example\sphere\service\ClientService.class
+com\example\sphere\service\ProductService.class
+com\example\sphere\repository\UserInformationRepository.class
+com\example\sphere\model\Client.class
+com\example\sphere\service\impl\ProductServiceImpl.class
+com\example\sphere\config\WebSecurityConfig.class
+com\example\sphere\model\Product.class
+com\example\sphere\config\DataInit.class
+com\example\sphere\model\UserInformation.class
+com\example\sphere\service\impl\ClientServiceImpl.class
+com\example\sphere\repository\ClientRepository.class
+com\example\sphere\web\SphereController.class
